@@ -7,7 +7,8 @@ module.exports = (sequelize, dataTypes) => {
       autoIncrement: true,
       allowNull: false,
     },
-    coordinates: { type: dataTypes.STRING(100), allowNull: true },
+    coordinates1: { type: dataTypes.STRING(100), allowNull: false },
+    coordinates2: { type: dataTypes.STRING(100), allowNull: false },
     createdAt: {
       type: "TIMESTAMP",
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
