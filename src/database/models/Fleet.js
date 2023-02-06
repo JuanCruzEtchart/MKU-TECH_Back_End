@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-  let alias = "ApiTest";
+  let alias = "Fleet";
   let cols = {
     id: {
       type: dataTypes.INTEGER(11),
@@ -7,8 +7,11 @@ module.exports = (sequelize, dataTypes) => {
       autoIncrement: true,
       allowNull: false,
     },
-    coordinates1: { type: dataTypes.STRING(100), allowNull: false },
-    coordinates2: { type: dataTypes.STRING(100), allowNull: false },
+    latitude: { type: dataTypes.STRING(120), allowNull: false },
+    longitude: { type: dataTypes.STRING(120), allowNull: false },
+    door_status: { type: dataTypes.INTEGER(1), allowNull: false },
+    vehicle_plate: { type: dataTypes.STRING(20), allowNull: false },
+    user_id: { type: dataTypes.INTEGER(1), allowNull: false },
     createdAt: {
       type: "TIMESTAMP",
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
@@ -26,8 +29,13 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: true,
     createdAt: "created_at",
     updatedAt: "updated_at",
-    tableName: "api_test",
+    tableName: "fleet",
   };
-  const ApiTest = sequelize.define(alias, cols, config);
-  return ApiTest;
+  const Fleet = sequelize.define(alias, cols, config);
+
+  Fleet.associate = (models) => {
+    Fleet.belongsTo(models.User, { as: "user", foreignKey: "user_id" });
+  };
+
+  return Fleet;
 };
