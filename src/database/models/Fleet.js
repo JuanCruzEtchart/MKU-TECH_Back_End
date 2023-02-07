@@ -12,12 +12,12 @@ module.exports = (sequelize, dataTypes) => {
     door_status: { type: dataTypes.INTEGER(1), allowNull: false },
     vehicle_plate: { type: dataTypes.STRING(20), allowNull: false },
     user_id: { type: dataTypes.INTEGER(1), allowNull: false },
-    createdAt: {
+    created_at: {
       type: "TIMESTAMP",
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
       allowNull: false,
     },
-    updatedAt: {
+    updated_at: {
       type: "TIMESTAMP",
       defaultValue: sequelize.literal(
         "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
@@ -29,7 +29,7 @@ module.exports = (sequelize, dataTypes) => {
     timestamps: true,
     createdAt: "created_at",
     updatedAt: "updated_at",
-    tableName: "fleet",
+    tableName: "fleets",
   };
   const Fleet = sequelize.define(alias, cols, config);
 

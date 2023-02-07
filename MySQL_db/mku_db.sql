@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 06-02-2023 a las 17:27:13
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.2.0
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 07-02-2023 a las 01:27:45
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,10 +26,10 @@ USE `mku_db`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `fleet`
+-- Estructura de tabla para la tabla `fleets`
 --
 
-CREATE TABLE `fleet` (
+CREATE TABLE `fleets` (
   `id` int(11) NOT NULL,
   `latitude` varchar(120) DEFAULT NULL,
   `longitude` varchar(120) DEFAULT NULL,
@@ -38,7 +38,15 @@ CREATE TABLE `fleet` (
   `user_id` int(11) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `fleets`
+--
+
+INSERT INTO `fleets` (`id`, `latitude`, `longitude`, `door_status`, `vehicle_plate`, `user_id`, `created_at`, `updated_at`) VALUES
+(3, '-34.59408712261369', '-58.39448015216882', 0, '123456', 1, '2023-02-06 23:09:28', '2023-02-06 23:09:28'),
+(4, '-34.59408712261369', '-58.39448015216882', 0, '789123', 1, '2023-02-06 23:09:28', '2023-02-06 23:09:28');
 
 -- --------------------------------------------------------
 
@@ -53,16 +61,23 @@ CREATE TABLE `users` (
   `admin_status` int(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `password`, `admin_status`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'Admin123', 1, '2023-02-06 22:45:22', '2023-02-06 22:45:22');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `fleet`
+-- Indices de la tabla `fleets`
 --
-ALTER TABLE `fleet`
+ALTER TABLE `fleets`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -77,26 +92,26 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT de la tabla `fleet`
+-- AUTO_INCREMENT de la tabla `fleets`
 --
-ALTER TABLE `fleet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `fleets`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `fleet`
+-- Filtros para la tabla `fleets`
 --
-ALTER TABLE `fleet`
-  ADD CONSTRAINT `fleet_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+ALTER TABLE `fleets`
+  ADD CONSTRAINT `fleets_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
