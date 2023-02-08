@@ -6,4 +6,4 @@ router.get("/", fleetsApiController.generalList);
 router.get("/:id", fleetsApiController.fleetList)
 router.get("/vehicle/:id", fleetsApiController.vehicleDetail);
 
-module.exports = router;
+module.exports = router; 
