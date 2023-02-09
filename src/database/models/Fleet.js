@@ -10,9 +10,13 @@ module.exports = (sequelize, dataTypes) => {
     latitude: { type: dataTypes.STRING(120), allowNull: false },
     longitude: { type: dataTypes.STRING(120), allowNull: false },
     door_status: { type: dataTypes.INTEGER(1), allowNull: false },
-    vehicle_plate: { type: dataTypes.STRING(20), allowNull: false },
+    vehicle_plate: {
+      type: dataTypes.STRING(20),
+      allowNull: false,
+      unique: { args: true, msg: "El vehículo ya existe!" },
+    },
     user_id: { type: dataTypes.INTEGER(1), allowNull: false },
-    created_at: {
+    /*     created_at: {
       type: "TIMESTAMP",
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP"),
       allowNull: false,
@@ -23,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
         "CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP"
       ),
       allowNull: false,
-    },
+    }, */
   };
   let config = {
     timestamps: true,

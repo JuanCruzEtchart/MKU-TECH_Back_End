@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-02-2023 a las 01:27:45
+-- Tiempo de generación: 09-02-2023 a las 06:38:03
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -29,6 +29,7 @@ USE `mku_db`;
 -- Estructura de tabla para la tabla `fleets`
 --
 
+DROP TABLE IF EXISTS `fleets`;
 CREATE TABLE `fleets` (
   `id` int(11) NOT NULL,
   `latitude` varchar(120) DEFAULT NULL,
@@ -54,13 +55,14 @@ INSERT INTO `fleets` (`id`, `latitude`, `longitude`, `door_status`, `vehicle_pla
 -- Estructura de tabla para la tabla `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `password` varchar(300) NOT NULL,
-  `admin_status` int(1) NOT NULL DEFAULT 0,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `admin_status` int(1) DEFAULT 0,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -68,7 +70,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `admin_status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'Admin123', 1, '2023-02-06 22:45:22', '2023-02-06 22:45:22');
+(1, 'Admin', 'Admin123', 1, '2023-02-06 22:45:22', '2023-02-06 22:45:22'),
+(2, '\"Carlitos\"', '\"Carlitos123\"', 0, '2023-02-09 00:07:23', '2023-02-09 00:07:23'),
+(3, '\"Carlitos2\"', '\"Carlitos123\"', 0, '2023-02-09 00:08:39', '2023-02-09 00:08:39'),
+(4, '\"Carlitos3\"', '\"Carlitos123\"', 0, '2023-02-09 00:09:27', '2023-02-09 00:09:27'),
+(8, '123', '123', 0, '2023-02-09 04:28:56', '2023-02-09 04:28:56'),
+(9, '124534', '1354325', 0, '2023-02-09 04:29:59', '2023-02-09 04:29:59'),
+(10, 'Hola', '$2a$12$3SYhF6Q2jvWFZSCKecSUtefXAjwWTytMzJ9VnYA.f3hsRSp5j4Nyq', 0, '2023-02-09 04:42:49', '2023-02-09 04:42:49'),
+(11, 'prueba contraseña', '$2a$12$jm7M0wVmJqDfr3J6FB3kveHWUCAAlUUoi3LwtBeIH0ApNotrkDSyC', 0, '2023-02-09 05:00:06', '2023-02-09 05:00:06');
 
 --
 -- Índices para tablas volcadas
@@ -79,13 +88,15 @@ INSERT INTO `users` (`id`, `name`, `password`, `admin_status`, `created_at`, `up
 --
 ALTER TABLE `fleets`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `vehicle_plate` (`vehicle_plate`),
   ADD KEY `user_id` (`user_id`);
 
 --
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -101,7 +112,7 @@ ALTER TABLE `fleets`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
