@@ -4,6 +4,7 @@
 
 > Aplicación web para captura y muestra de datos de telemetría, para la monitorización y análisis de información relevante al medio aplicado. 
 Este back end se encarga de capturar los datos de los sensores, guardarlos en una base de datos MySQL y enviarlos al front end a través de REST API.
+Actualmente la principal funcionalidad del proyecto es mostrar la ubicación GPS de camionetas de reparto, utilizando la API de Google Maps.
 
 ### 🏠 [Homepage](https://www.mkutech.com)
 ### 📷 [Instagram](https://www.instagram.com/mku.tech/)
