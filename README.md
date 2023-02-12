@@ -2,7 +2,8 @@
 <p>
 </p>
 
-> Aplicación web para captura y muestra de datos de telemetría, para la monitorización y análisis de información relevante al medio aplicado. Este back end se encarga de capturar los datos de los sensores, guardarlos en una base de datos MySQL y enviarlos al front end a través de REST API.
+> Aplicación web para captura y muestra de datos de telemetría, para la monitorización y análisis de información relevante al medio aplicado. 
+Este back end se encarga de capturar los datos de los sensores, guardarlos en una base de datos MySQL y enviarlos al front end a través de REST API.
 
 ### 🏠 [Homepage](https://www.mkutech.com)
 
@@ -23,7 +24,7 @@ npm run dev
 👤 **Juan Cruz Etchart**
 
 * Github: [@JuanCruzEtchart](https://github.com/JuanCruzEtchart)
-* LinkedIn: [@https:\/\/www.linkedin.com\/in\/juan-cruz-etchart\/](https://linkedin.com/in/https:\/\/www.linkedin.com\/in\/juan-cruz-etchart\/)
+* LinkedIn: [@Juan Cruz Etchart](https://www.linkedin.com/in/juan-cruz-etchart/)
 
 ## Show your support
 
