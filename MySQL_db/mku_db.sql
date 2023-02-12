@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-02-2023 a las 06:38:03
+-- Tiempo de generación: 12-02-2023 a las 07:27:24
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -47,7 +47,7 @@ CREATE TABLE `fleets` (
 
 INSERT INTO `fleets` (`id`, `latitude`, `longitude`, `door_status`, `vehicle_plate`, `user_id`, `created_at`, `updated_at`) VALUES
 (3, '-34.59408712261369', '-58.39448015216882', 0, '123456', 1, '2023-02-06 23:09:28', '2023-02-06 23:09:28'),
-(4, '-34.59408712261369', '-58.39448015216882', 0, '789123', 1, '2023-02-06 23:09:28', '2023-02-06 23:09:28');
+(4, '-34.59408712261369', '-58.39448015216882', 0, '789123', 2, '2023-02-06 23:09:28', '2023-02-12 06:26:09');
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,9 @@ INSERT INTO `users` (`id`, `name`, `password`, `admin_status`, `created_at`, `up
 (8, '123', '123', 0, '2023-02-09 04:28:56', '2023-02-09 04:28:56'),
 (9, '124534', '1354325', 0, '2023-02-09 04:29:59', '2023-02-09 04:29:59'),
 (10, 'Hola', '$2a$12$3SYhF6Q2jvWFZSCKecSUtefXAjwWTytMzJ9VnYA.f3hsRSp5j4Nyq', 0, '2023-02-09 04:42:49', '2023-02-09 04:42:49'),
-(11, 'prueba contraseña', '$2a$12$jm7M0wVmJqDfr3J6FB3kveHWUCAAlUUoi3LwtBeIH0ApNotrkDSyC', 0, '2023-02-09 05:00:06', '2023-02-09 05:00:06');
+(11, 'prueba contraseña', '$2a$12$jm7M0wVmJqDfr3J6FB3kveHWUCAAlUUoi3LwtBeIH0ApNotrkDSyC', 0, '2023-02-09 05:00:06', '2023-02-09 05:00:06'),
+(12, 'prueba1', '$2a$12$A9BDosFq33vOb4NzY3nHDO4SSceTaHxYfzyOdCCQs06FyhK4YeOpK', 0, '2023-02-09 20:06:30', '2023-02-09 20:06:30'),
+(13, '', '$2a$12$VTZGLVOEiu1GoUL//Hw3LuAaBUA92eAvNuQbw9Exg0arsIjtgagau', 0, '2023-02-11 18:57:42', '2023-02-11 18:57:42');
 
 --
 -- Índices para tablas volcadas
@@ -112,7 +114,7 @@ ALTER TABLE `fleets`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas

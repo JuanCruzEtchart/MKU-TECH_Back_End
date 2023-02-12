@@ -36,6 +36,20 @@ const fleetsApiController = {
         meta: { status: 200, url: `api/fleets/vehicle/${id}` },
         data: vehicle,
       };
+      console.log("STATUS DE LA PUERTA" + vehicle);
+      res.json(response);
+    } catch (err) {
+      res.send(err);
+    }
+  },
+  vehicleDoorStatus: async (req, res) => {
+    try {
+      id = req.params.id;
+      let vehicle = await Fleet.findByPk(id);
+      let response = {
+        meta: { status: 200, url: `api/fleets/vehicle/${id}/doorstatus` },
+        data: vehicle.door_status,
+      };
       res.json(response);
     } catch (err) {
       res.send(err);

@@ -4,7 +4,10 @@ const User = db.User;
 const usersApiController = {
   generalList: async (req, res) => {
     try {
-      let users = await User.findAll({ include: ["fleet"] });
+      let users = await User.findAll({
+        include: ["fleet"],
+        attributes: { exclude: ["password"] },
+      });
       let response = {
         meta: { status: 200, total: users.length, url: "api/users" },
         data: users,
@@ -17,7 +20,10 @@ const usersApiController = {
   userDetail: async (req, res) => {
     try {
       id = req.params.id;
-      let user = await User.findByPk(id, { include: ["fleet"] });
+      let user = await User.findByPk(id, {
+        include: ["fleet"],
+        attributes: { exclude: ["password"] },
+      });
       let response = {
         meta: { status: 200, url: `api/user/${id}` },
         data: user,
