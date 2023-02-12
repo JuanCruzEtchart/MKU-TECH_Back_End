@@ -16,6 +16,12 @@ npm install
 ## Usage
 
 ```sh
+npm start
+```
+
+## Test
+
+```sh
 npm run dev
 ```
 
