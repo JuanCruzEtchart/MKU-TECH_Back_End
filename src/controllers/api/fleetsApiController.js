@@ -5,7 +5,13 @@ const Fleet = db.Fleet;
 const fleetsApiController = {
   generalList: async (req, res) => {
     try {
-      let fleets = await Fleet.findAll({ include: ["user"] });
+      let fleets = await Fleet.findAll({
+        include: [
+          { association: "user", attributes: { exclude: ["password"] } },
+        ],
+      });
+      //{ model: db.Users, attributes: { exclude: ["password"] }}
+      //let fleets = await Fleet.findAll({ include: ["user"] });
       let response = {
         meta: { status: 200, total: fleets.length, url: "api/fleets" },
         data: fleets,
@@ -31,12 +37,15 @@ const fleetsApiController = {
   vehicleDetail: async (req, res) => {
     try {
       id = req.params.id;
-      let vehicle = await Fleet.findByPk(id, { include: ["user"] });
+      let vehicle = await Fleet.findByPk(id, {
+        include: [
+          { association: "user", attributes: { exclude: ["password"] } },
+        ],
+      });
       let response = {
         meta: { status: 200, url: `api/fleets/vehicle/${id}` },
         data: vehicle,
       };
-      console.log("STATUS DE LA PUERTA" + vehicle);
       res.json(response);
     } catch (err) {
       res.send(err);
