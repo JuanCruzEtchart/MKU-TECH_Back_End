@@ -25,7 +25,24 @@ const usersApiController = {
         attributes: { exclude: ["password"] },
       });
       let response = {
-        meta: { status: 200, url: `api/user/${id}` },
+        meta: { status: 200, url: `api/users/${id}` },
+        data: user,
+      };
+      res.json(response);
+    } catch (err) {
+      res.send(err);
+    }
+  },
+  userSearch: async (req, res) => {
+    try {
+      username = req.params.username;
+      console.log(`Usuario: ${username}`);
+      let user = await User.findOne({
+        where: { name: username },
+        /* attributes: { exclude: ["password"] }, */
+      });
+      let response = {
+        meta: { status: 200, url: `api/users/username/apikey/${username}` },
         data: user,
       };
       res.json(response);
@@ -41,6 +58,21 @@ const usersApiController = {
       });
       let response = {
         meta: { status: 200, url: "api/users/create" },
+        data: user,
+      };
+      res.json(response);
+    } catch (err) {
+      res.send(err);
+    }
+  },
+  userLogin: async (req, res) => {
+    try {
+      let user = await User.findOne({
+        where: { name: req.body.name, password: req.body.password },
+        attributes: { exclude: ["password"] },
+      });
+      let response = {
+        meta: { status: 200, url: "api/users/login" },
         data: user,
       };
       res.json(response);

@@ -1,0 +1,6 @@
+Prioridad:
+- Agregar apikeys con variable de entorno en vez de usar variable local en router
+
+Más adelante:
+
+
