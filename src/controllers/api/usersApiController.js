@@ -1,4 +1,5 @@
 const db = require("../../database/models");
+const jwt = require("jsonwebtoken");
 const User = db.User;
 
 const usersApiController = {
@@ -39,7 +40,6 @@ const usersApiController = {
       console.log(`Usuario: ${username}`);
       let user = await User.findOne({
         where: { name: username },
-        /* attributes: { exclude: ["password"] }, */
       });
       let response = {
         meta: { status: 200, url: `api/users/username/apikey/${username}` },

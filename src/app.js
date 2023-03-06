@@ -11,6 +11,7 @@ const usersApiRouter = require("./routes/api/usersApiRouter.js");
 const fleetsApiRouter = require("./routes/api/fleetsApiRouter");
 
 const app = express();
+require("dotenv").config();
 
 // view engine setup
 app.set("views", path.join(__dirname, "../views"));
